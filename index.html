@@ -3,12 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Video to MJPEG Converter</title>
+  <title>FFmpeg File Conversion</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.dom.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.8/dist/ffmpeg.min.js"></script> <!-- Ensure this CDN is correct -->
-  <script src="videoConvert5js.js"></script> <!-- Your JS file -->
+  <script src="https://cdn.jsdelivr.net/npm/@ffmpeg/ffmpeg@0.11.5/dist/ffmpeg.min.js"></script>
+  <script src="videoConvert5js.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #282828;
+      color: white;
+    }
+    input[type="file"] {
+      margin: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:disabled {
+      background-color: grey;
+    }
+    progress {
+      width: 100%;
+      margin: 10px;
+    }
+  </style>
 </head>
 <body>
+  <h1>Video Conversion with FFmpeg</h1>
+  <input type="file" id="file-input" multiple accept=".mp4" />
+  <progress id="overall-progress" value="0" max="100"></progress><br/>
+  <progress id="file-progress" value="0" max="100"></progress><br/>
+  <button id="convert-button" onclick="startConversion()">Start Conversion</button>
+
+  <div id="output"></div>
 </body>
 </html>
